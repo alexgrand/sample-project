@@ -43,6 +43,7 @@ commitizen = "^3.27.0"
 mkdocs-material = "^9.5.26"
 mkdocs = {extras = ["python"], version = "^1.6.0"}
 pact-python = "^2.2.0"
+allure-pytest = "^2.13.5"
 
 [tool.isort]
 multi_line_output = 3
