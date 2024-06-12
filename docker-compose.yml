@@ -124,6 +124,35 @@ services:
       # Middleware to redirect www, and redirect HTTP to HTTPS
       # to disable www redirection remove the section: ${STACK_NAME?Variable not set}-www-redirect,
       - traefik.http.routers.${STACK_NAME?Variable not set}-frontend-http.middlewares=https-redirect,${STACK_NAME?Variable not set}-www-redirect
+
+  pact-broker:
+    image: "pactfoundation/pact-broker:latest"
+    ports:
+      - "9292:9292"
+    depends_on:
+      - db
+      - backend
+    networks:
+      - traefik-public
+      - default
+    env_file:
+      - .env
+    environment:
+      PACT_BROKER_PORT: '9292'
+      PACT_BROKER_DATABASE_URL: "sqlite:////tmp/pact_broker:sqlte3"
+      PACT_BROKER_LOG_LEVEL: INFO
+      PACT_BROKER_SQL_LOG_LEVEL: DEBUG
+      PACT_BROKER_DATABASE_CONNECT_MAX_RETRIES: "5"
+      PACT_BROKER_BASE_URL: 'http://localhost:9292 http://pact-broker:9292 https://host.docker.internal http://host.docker.internal http://host.docker.internal:9292'
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik-public
+      - traefik.constraint-label=traefik-public
+      - traefik.http.routers.${STACK_NAME?Variable not set}-pact-http.rule=Host(`pact.${DOMAIN?Variable not set}`)
+      - traefik.http.routers.${STACK_NAME?Variable not set}-pact-http.entrypoints=http
+      - traefik.http.routers.${STACK_NAME?Variable not set}-pact-http.middlewares=https-redirect
+      - traefik.http.services.${STACK_NAME?Variable not set}-pact.loadbalancer.server.port=9292
+
 volumes:
   app-db-data:
 

@@ -1,0 +1,44 @@
+I, [2024-06-13T00:08:46.698927 #167057]  INFO -- : Cleared interactions
+I, [2024-06-13T00:08:46.701625 #167057]  INFO -- : Registered expected interaction GET /api/v1/version
+D, [2024-06-13T00:08:46.701868 #167057] DEBUG -- : {
+  "description": "a request for GET /api/v1/version",
+  "providerState": "Version 0.3.0 exists",
+  "request": {
+    "method": "get",
+    "path": "/api/v1/version"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+    },
+    "body": {
+      "version": "0.3.0"
+    }
+  },
+  "metadata": null
+}
+I, [2024-06-13T00:08:46.704212 #167057]  INFO -- : Received request GET /api/v1/version
+D, [2024-06-13T00:08:46.704400 #167057] DEBUG -- : {
+  "path": "/api/v1/version",
+  "query": "",
+  "method": "get",
+  "headers": {
+    "Host": "localhost:1234",
+    "User-Agent": "python-requests/2.32.3",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept": "*/*",
+    "Connection": "keep-alive",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2024-06-13T00:08:46.704531 #167057]  INFO -- : Found matching response for GET /api/v1/version
+D, [2024-06-13T00:08:46.704567 #167057] DEBUG -- : {
+  "status": 200,
+  "headers": {
+  },
+  "body": {
+    "version": "0.3.0"
+  }
+}
+I, [2024-06-13T00:08:46.706630 #167057]  INFO -- : Verifying - interactions matched
+I, [2024-06-13T00:08:46.708757 #167057]  INFO -- : Writing pact for BackendAPI to /home/alex/presentations/BrightMinds/my-awesome-project/backend/frontend-backendapi.json

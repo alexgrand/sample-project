@@ -1,0 +1,31 @@
+{
+  "consumer": {
+    "name": "Frontend"
+  },
+  "provider": {
+    "name": "BackendAPI"
+  },
+  "interactions": [
+    {
+      "description": "a request for GET /api/v1/version",
+      "providerState": "Version 0.3.0 exists",
+      "request": {
+        "method": "get",
+        "path": "/api/v1/version"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "version": "0.3.0"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
