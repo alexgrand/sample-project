@@ -54,6 +54,9 @@ major_version_zero = true
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
+version_files = [
+    "app/__version__"
+]
 
 [tool.mypy]
 strict = true
