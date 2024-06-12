@@ -24,6 +24,14 @@ repos:
     hooks:
       - id: commitizen
     stages: [push]
+-   repo: local
+    hooks:
+    -   id: wily
+        name: wily
+        entry: wily diff
+        verbose: true
+        language: python
+        additional_dependencies: [wily]
 ci:
     autofix_commit_msg: 🎨 [pre-commit.ci] Auto format from pre-commit.com hooks
     autoupdate_commit_msg: ⬆ [pre-commit.ci] pre-commit autoupdate
