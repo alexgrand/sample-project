@@ -13,11 +13,21 @@ from app.core.config import settings
 
 @dataclass
 class EmailData:
+    """Dataclass that holds information on email data."""
+
     html_content: str
     subject: str
 
 
 def render_email_template(*, template_name: str, context: dict[str, Any]) -> str:
+    """Render email template with provided context.
+
+    Args:
+        template_name: template name
+        context: email context
+    Returns:
+         rendered template
+    """
     template_str = (
         Path(__file__).parent / "email-templates" / "build" / template_name
     ).read_text()
